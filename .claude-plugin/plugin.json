@@ -1,0 +1,191 @@
+{
+  "name": "devbar",
+  "version": "0.1.0",
+  "author": { "name": "devbar contributors" },
+  "description": "Dev status line for Claude Code: project, git, last test, CI, the project's own ports and a context/usage meter",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "showModel": {
+      "type": "boolean",
+      "title": "Show model",
+      "description": "Model name (opus 5.5)",
+      "default": true
+    },
+    "showGit": {
+      "type": "boolean",
+      "title": "Show git",
+      "description": "Branch, uncommitted changes and ahead/behind",
+      "default": true
+    },
+    "showLastCheck": {
+      "type": "boolean",
+      "title": "Show last test",
+      "description": "Result of the last test, build or typecheck Claude ran",
+      "default": true
+    },
+    "showCi": {
+      "type": "boolean",
+      "title": "Show CI",
+      "description": "GitHub Actions result for the current branch (needs gh)",
+      "default": true
+    },
+    "showPr": {
+      "type": "boolean",
+      "title": "Show pull request",
+      "description": "Open PR of the current branch and its review state (needs gh)",
+      "default": false
+    },
+    "showPorts": {
+      "type": "boolean",
+      "title": "Show ports",
+      "description": "Ports of servers started from this project, and its Docker Compose services",
+      "default": true
+    },
+    "language": {
+      "type": "string",
+      "title": "Language",
+      "description": "auto follows the system language",
+      "options": ["auto", "pt", "en"],
+      "default": "auto"
+    },
+    "plainBranch": {
+      "type": "boolean",
+      "title": "Plain branch button",
+      "description": "Branch button (opens the git panel) without [ ] brackets",
+      "default": false
+    },
+    "plainPorts": {
+      "type": "boolean",
+      "title": "Plain port buttons",
+      "description": "Port buttons (copy the localhost URL) without [ ] brackets",
+      "default": false
+    },
+    "plainCi": {
+      "type": "boolean",
+      "title": "Plain CI button",
+      "description": "CI button (copies the run link) without [ ] brackets",
+      "default": false
+    },
+    "plainPr": {
+      "type": "boolean",
+      "title": "Plain PR button",
+      "description": "PR button (copies the PR link) without [ ] brackets",
+      "default": false
+    },
+    "plainFix": {
+      "type": "boolean",
+      "title": "Plain fix buttons",
+      "description": "Fix buttons of a failed test or CI without [ ] brackets",
+      "default": false
+    },
+    "plainMeter": {
+      "type": "boolean",
+      "title": "Plain meter button",
+      "description": "Meter button (Context / 5 hours / Week / Cost) without [ ] brackets",
+      "default": false
+    },
+    "plainCompact": {
+      "type": "boolean",
+      "title": "Plain compact button",
+      "description": "The 'compact' word after the tokens left (fills /compact) without [ ] brackets",
+      "default": true
+    },
+    "plainPaneActions": {
+      "type": "boolean",
+      "title": "Plain commit/review buttons",
+      "description": "Commit and review buttons of the git panel without [ ] brackets",
+      "default": false
+    },
+    "plainHashes": {
+      "type": "boolean",
+      "title": "Plain commit hashes",
+      "description": "Commit hash buttons of the git panel without [ ] brackets",
+      "default": false
+    },
+    "plainModel": {
+      "type": "boolean",
+      "title": "Plain model button",
+      "description": "Model button (fills /model) without [ ] brackets",
+      "default": true
+    },
+    "plainEffort": {
+      "type": "boolean",
+      "title": "Plain effort button",
+      "description": "Effort button next to the model (fills /effort) without [ ] brackets",
+      "default": true
+    },
+    "plainProject": {
+      "type": "boolean",
+      "title": "Plain folder button",
+      "description": "Project folder button (copies its full path) without [ ] brackets",
+      "default": true
+    },
+    "cacheTtl": {
+      "type": "string",
+      "title": "Prompt cache TTL",
+      "description": "How long Claude Code keeps the prompt cache warm on your account (1h on most subscriptions, 5m on API keys)",
+      "options": ["1h", "5m"],
+      "default": "1h"
+    },
+    "commitPrompt": {
+      "type": "string",
+      "title": "Commit prompt",
+      "description": "Text the git panel's commit button puts in the prompt. Empty uses the built-in text",
+      "default": ""
+    },
+    "reviewPrompt": {
+      "type": "string",
+      "title": "Review prompt",
+      "description": "Text the git panel's review button puts in the prompt. Empty uses /code-review high",
+      "default": ""
+    },
+    "testFixPrompt": {
+      "type": "string",
+      "title": "Test fix prompt",
+      "description": "Text the fix button of a failed test puts in the prompt; {command} becomes the command that failed. Empty uses the built-in text",
+      "default": ""
+    },
+    "ciFixPrompt": {
+      "type": "string",
+      "title": "CI fix prompt",
+      "description": "Text the fix button of a failed CI puts in the prompt. Empty uses the built-in text",
+      "default": ""
+    },
+    "compactPrompt": {
+      "type": "string",
+      "title": "Compact prompt",
+      "description": "Text the compact button next to the context meter puts in the prompt. Empty uses /compact",
+      "default": ""
+    },
+    "modelPrompt": {
+      "type": "string",
+      "title": "Model prompt",
+      "description": "Text the model button puts in the prompt. Empty uses /model",
+      "default": ""
+    },
+    "effortPrompt": {
+      "type": "string",
+      "title": "Effort prompt",
+      "description": "Text the effort button next to the model puts in the prompt. Empty uses /effort",
+      "default": ""
+    },
+    "worktreeEnterPrompt": {
+      "type": "string",
+      "title": "Worktree enter prompt",
+      "description": "Text the git panel's enter button of a worktree puts in the prompt; {path} becomes its path relative to the session (absolute on another drive or a network share) and {worktree} its name (empty when the name is not a single word). With a custom text, paths with spaces get no button. Empty uses /cd {path}",
+      "default": ""
+    },
+    "worktreeRemovePrompt": {
+      "type": "string",
+      "title": "Worktree remove prompt",
+      "description": "Text the git panel's remove button of a worktree puts in the prompt; {worktree} becomes its name. Empty uses the built-in text",
+      "default": ""
+    },
+    "worktreePrunePrompt": {
+      "type": "string",
+      "title": "Worktree prune prompt",
+      "description": "Text the git panel's prune stale button puts in the prompt. Empty uses the built-in text",
+      "default": ""
+    }
+  }
+}

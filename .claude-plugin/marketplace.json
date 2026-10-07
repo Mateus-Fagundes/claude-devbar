@@ -1,0 +1,13 @@
+{
+  "name": "claude-devbar",
+  "owner": { "name": "devbar contributors" },
+  "description": "devbar, an independent dev status line and git panel for Claude Code",
+  "plugins": [
+    {
+      "name": "devbar",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Dev status line and git panel for Claude Code: git, last test, CI, PR, the project's ports, and a context and usage meter. Independent project, not affiliated with Anthropic."
+    }
+  ]
+}
